@@ -22,8 +22,6 @@ libgtk-3-dev libavcodec-dev libavformat-dev libswscale-dev
 libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev
 libopenexr-dev libeigen3-dev libdc1394-22-dev libqt5opengl5-dev qtbase5-dev
 
-
-
 mkdir -p ~/SoftWare && cd ~/SoftWare
 
 # OpenCV 主仓库
@@ -35,7 +33,6 @@ unzip opencv-4.5.4.zip
 
 wget -O opencv_contrib-4.5.4.zip https://github.com/opencv/opencv_contrib/archive/4.5.4.zip
 unzip opencv_contrib-4.5.4.zip
-
 
 cd ~/SoftWare/opencv-4.5.4
 mkdir build && cd build
@@ -56,11 +53,8 @@ cmake .. \
 
 ```
 
-
 make -j$(nproc)
 sudo make install
-
-
 
 gedit ~/.bashrc
 
@@ -76,6 +70,11 @@ export PKG_CONFIG_PATH=/opt/opencv-4.5.4/lib/pkgconfig:$PKG_CONFIG_PATH
 #运行 C++ 可执行程序时能正确加载 4.5.4 的 .so 动态库。
 export LD_LIBRARY_PATH=/opt/opencv-4.5.4/lib:$LD_LIBRARY_PATH
 
-
-
 catkin_make -DCMAKE_PREFIX_PATH=/opt/opencv-4.5.4
+
+pip3 install ultralytics
+
+
+运行：
+
+rosrun yolo_obb_node CarlaSlotDetect.py
