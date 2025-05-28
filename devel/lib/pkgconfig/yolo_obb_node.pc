@@ -1,8 +1,0 @@
-prefix=/home/crist/Desktop/Carla_Park/devel
-
-Name: yolo_obb_node
-Description: Description of yolo_obb_node
-Version: 0.0.1
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

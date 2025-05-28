@@ -12,7 +12,7 @@ public:
     YoloDetector(ros::NodeHandle& nh)
     {
         image_sub_ = nh.subscribe("/carla/ego_vehicle/rgb_omnview/image", 1, &YoloDetector::imageCallback, this);
-        camera_info_sub_ = nh.subscribe("/carla/ego_vehicle/rgb_omnview/info", 1, &YoloDetector::cameraInfoCallback, this);
+        camera_info_sub_ = nh.subscribe("/carla/ego_vehicle/rgb_omnview/camera_info", 1, &YoloDetector::cameraInfoCallback, this);
 
         image_pub_ = nh.advertise<sensor_msgs::Image>("/carla/ego_vehicle/detected_image", 1);
         point_pub_ = nh.advertise<geometry_msgs::PointStamped>("/carla/parking_spot_position", 1);
@@ -25,8 +25,8 @@ public:
             std::cerr << "Error loading model: " << e.what() << std::endl;
         }
         // net_ = cv::dnn::readNetFromONNX("/home/crist/Desktop/Carla_Park/Perception/yolov8_carla_slot_obb.onnx");
-        // net_.setPreferableBackend(cv::dnn::DNN_BACKEND_OPENCV);
-        // net_.setPreferableTarget(cv::dnn::DNN_TARGET_CUDA); // or DNN_TARGET_CPU
+        net_.setPreferableBackend(cv::dnn::DNN_BACKEND_OPENCV);
+        net_.setPreferableTarget(cv::dnn::DNN_TARGET_CUDA); // or DNN_TARGET_CPU
 
         ROS_INFO("YOLOv8 ONNX model loaded.");
     }

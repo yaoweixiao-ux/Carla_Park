@@ -1,2 +1,0 @@
-.
--DCATKIN_DEVEL_PREFIX=/home/crist/Desktop/Carla_Park/devel -DCMAKE_INSTALL_PREFIX=/home/crist/Desktop/Carla_Park/install -G Unix Makefiles
